@@ -299,6 +299,13 @@
         ]
       },
       {
+        "Name": "D",
+        "Aliases": [
+          "d",
+          "di"
+        ]
+      },
+      {
         "Name": "DTD",
         "Aliases": [
           "dtd"
@@ -501,6 +508,12 @@
         ]
       },
       {
+        "Name": "HCL",
+        "Aliases": [
+          "hcl"
+        ]
+      },
+      {
         "Name": "HTML",
         "Aliases": [
           "htm",
@@ -576,13 +589,6 @@
         "Name": "JSON",
         "Aliases": [
           "json"
-        ]
-      },
-      {
-        "Name": "JSX",
-        "Aliases": [
-          "jsx",
-          "react"
         ]
       },
       {
@@ -1299,6 +1305,13 @@
         ]
       },
       {
+        "Name": "react",
+        "Aliases": [
+          "jsx",
+          "react"
+        ]
+      },
+      {
         "Name": "reg",
         "Aliases": [
           "reg",
@@ -1318,6 +1331,13 @@
         "Aliases": [
           "v",
           "verilog"
+        ]
+      },
+      {
+        "Name": "vue",
+        "Aliases": [
+          "vue",
+          "vuejs"
         ]
       }
     ]
@@ -1500,6 +1520,30 @@
     "formats": [
       {
         "MediaType": "text/html",
+        "name": "HTML",
+        "mediaType": {
+          "type": "text/html",
+          "string": "text/html",
+          "mainType": "text",
+          "subType": "html",
+          "delimiter": ".",
+          "suffixes": [
+            "html"
+          ]
+        },
+        "path": "",
+        "baseName": "index",
+        "rel": "canonical",
+        "protocol": "",
+        "isPlainText": false,
+        "isHTML": true,
+        "noUgly": false,
+        "notAlternative": false,
+        "permalinkable": true,
+        "weight": 10
+      },
+      {
+        "MediaType": "text/html",
         "name": "AMP",
         "mediaType": {
           "type": "text/html",
@@ -1519,7 +1563,8 @@
         "isHTML": true,
         "noUgly": false,
         "notAlternative": false,
-        "permalinkable": true
+        "permalinkable": true,
+        "weight": 0
       },
       {
         "MediaType": "text/css",
@@ -1542,7 +1587,8 @@
         "isHTML": false,
         "noUgly": false,
         "notAlternative": true,
-        "permalinkable": false
+        "permalinkable": false,
+        "weight": 0
       },
       {
         "MediaType": "text/csv",
@@ -1565,7 +1611,8 @@
         "isHTML": false,
         "noUgly": false,
         "notAlternative": false,
-        "permalinkable": false
+        "permalinkable": false,
+        "weight": 0
       },
       {
         "MediaType": "text/calendar",
@@ -1588,30 +1635,8 @@
         "isHTML": false,
         "noUgly": false,
         "notAlternative": false,
-        "permalinkable": false
-      },
-      {
-        "MediaType": "text/html",
-        "name": "HTML",
-        "mediaType": {
-          "type": "text/html",
-          "string": "text/html",
-          "mainType": "text",
-          "subType": "html",
-          "delimiter": ".",
-          "suffixes": [
-            "html"
-          ]
-        },
-        "path": "",
-        "baseName": "index",
-        "rel": "canonical",
-        "protocol": "",
-        "isPlainText": false,
-        "isHTML": true,
-        "noUgly": false,
-        "notAlternative": false,
-        "permalinkable": true
+        "permalinkable": false,
+        "weight": 0
       },
       {
         "MediaType": "application/json",
@@ -1634,7 +1659,8 @@
         "isHTML": false,
         "noUgly": false,
         "notAlternative": false,
-        "permalinkable": false
+        "permalinkable": false,
+        "weight": 0
       },
       {
         "MediaType": "text/plain",
@@ -1657,7 +1683,8 @@
         "isHTML": false,
         "noUgly": false,
         "notAlternative": false,
-        "permalinkable": false
+        "permalinkable": false,
+        "weight": 0
       },
       {
         "MediaType": "application/rss+xml",
@@ -1680,7 +1707,8 @@
         "isHTML": false,
         "noUgly": true,
         "notAlternative": false,
-        "permalinkable": false
+        "permalinkable": false,
+        "weight": 0
       },
       {
         "MediaType": "application/xml",
@@ -1703,7 +1731,8 @@
         "isHTML": false,
         "noUgly": true,
         "notAlternative": false,
-        "permalinkable": false
+        "permalinkable": false,
+        "weight": 0
       }
     ],
     "layouts": [
@@ -2549,6 +2578,26 @@
           ],
           "Examples": []
         },
+        "Merge": {
+          "Description": "Merge creates a copy of dst and merges src into it.\nCurrently only maps supported. Key handling is case insensitive.",
+          "Args": [
+            "src",
+            "dst"
+          ],
+          "Aliases": [
+            "merge"
+          ],
+          "Examples": [
+            [
+              "{{ dict \"title\" \"Hugo Rocks!\" | collections.Merge (dict \"title\" \"Default Title\" \"description\" \"Yes, Hugo Rocks!\") | sort }}",
+              "[Yes, Hugo Rocks! Hugo Rocks!]"
+            ],
+            [
+              "{{  merge (dict \"title\" \"Default Title\" \"description\" \"Yes, Hugo Rocks!\") (dict \"title\" \"Hugo Rocks!\") | sort }}",
+              "[Yes, Hugo Rocks! Hugo Rocks!]"
+            ]
+          ]
+        },
         "NewScratch": {
           "Description": "NewScratch creates a new Scratch which can be used to store values in a\nthread safe way.",
           "Args": null,
@@ -2667,7 +2716,7 @@
         "Uniq": {
           "Description": "Uniq takes in a slice or array and returns a slice with subsequent\nduplicate elements removed.",
           "Args": [
-            "l"
+            "seq"
           ],
           "Aliases": [
             "uniq"
@@ -2896,6 +2945,24 @@
         }
       },
       "images": {
+        "Brightness": {
+          "Description": "",
+          "Args": null,
+          "Aliases": null,
+          "Examples": null
+        },
+        "ColorBalance": {
+          "Description": "",
+          "Args": null,
+          "Aliases": null,
+          "Examples": null
+        },
+        "Colorize": {
+          "Description": "",
+          "Args": null,
+          "Aliases": null,
+          "Examples": null
+        },
         "Config": {
           "Description": "Config returns the image.Config for the specified path relative to the\nworking directory.",
           "Args": [
@@ -2905,6 +2972,78 @@
             "imageConfig"
           ],
           "Examples": []
+        },
+        "Contrast": {
+          "Description": "",
+          "Args": null,
+          "Aliases": null,
+          "Examples": null
+        },
+        "Filter": {
+          "Description": "",
+          "Args": null,
+          "Aliases": null,
+          "Examples": null
+        },
+        "Gamma": {
+          "Description": "",
+          "Args": null,
+          "Aliases": null,
+          "Examples": null
+        },
+        "GaussianBlur": {
+          "Description": "",
+          "Args": null,
+          "Aliases": null,
+          "Examples": null
+        },
+        "Grayscale": {
+          "Description": "",
+          "Args": null,
+          "Aliases": null,
+          "Examples": null
+        },
+        "Hue": {
+          "Description": "",
+          "Args": null,
+          "Aliases": null,
+          "Examples": null
+        },
+        "Invert": {
+          "Description": "",
+          "Args": null,
+          "Aliases": null,
+          "Examples": null
+        },
+        "Pixelate": {
+          "Description": "",
+          "Args": null,
+          "Aliases": null,
+          "Examples": null
+        },
+        "Saturation": {
+          "Description": "",
+          "Args": null,
+          "Aliases": null,
+          "Examples": null
+        },
+        "Sepia": {
+          "Description": "",
+          "Args": null,
+          "Aliases": null,
+          "Examples": null
+        },
+        "Sigmoid": {
+          "Description": "",
+          "Args": null,
+          "Aliases": null,
+          "Examples": null
+        },
+        "UnsharpMask": {
+          "Description": "",
+          "Args": null,
+          "Aliases": null,
+          "Examples": null
         }
       },
       "inflect": {
@@ -3232,7 +3371,7 @@
       },
       "partials": {
         "Include": {
-          "Description": "Include executes the named partial and returns either a string,\nwhen the partial is a text/template, or template.HTML when html/template.",
+          "Description": "Include executes the named partial.\nIf the partial contains a return statement, that value will be returned.\nElse, the rendered output will be returned:\nA string if the partial is a text/template, or template.HTML when html/template.",
           "Args": [
             "name",
             "contextList"
@@ -3384,12 +3523,24 @@
           "Examples": null
         },
         "Get": {
-          "Description": "Get locates the filename given in Hugo's filesystems: static, assets and content (in that order)\nand creates a Resource object that can be used for further transformations.",
+          "Description": "Get locates the filename given in Hugo's assets filesystem\nand creates a Resource object that can be used for further transformations.",
           "Args": [
             "filename"
           ],
           "Aliases": null,
           "Examples": []
+        },
+        "GetMatch": {
+          "Description": "",
+          "Args": null,
+          "Aliases": null,
+          "Examples": null
+        },
+        "Match": {
+          "Description": "",
+          "Args": null,
+          "Aliases": null,
+          "Examples": null
         },
         "Minify": {
           "Description": "Minify minifies the given Resource using the MediaType to pick the correct\nminifier.",
